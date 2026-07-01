@@ -51,5 +51,4 @@ public static partial class ResultExtensions
                 },
             };
     }
-    
 }

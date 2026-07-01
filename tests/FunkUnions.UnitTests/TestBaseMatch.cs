@@ -14,4 +14,10 @@ public abstract class TestBase<T, TError>
     protected Result<int, Exception> GetOkValue() => 2;
 
     protected Result<int, Exception> GetErrorValue() => new Exception("Test Exception");
+
+    public interface ISimpleLogger
+    {
+        void LogSuccess(string message);
+        void LogError(string message);
+    }
 }

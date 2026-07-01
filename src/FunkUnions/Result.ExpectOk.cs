@@ -6,7 +6,9 @@ public partial union Result<T, TError>
         => this switch
         {
             T okVal => okVal,
-            TError => throw new OkResultExpectedException(customMessage),
+            TError => throw new OkResultExpectedException(
+                customMessage ??
+                "Result object was expected to have Ok value, but has Error value instead."),
         };
 
     public readonly T ExpectOk(Func<TError, Exception> customException)

@@ -19,6 +19,25 @@ public class ExpectOkTests : TestBaseMatch<int, Exception>
     }
 
     [Test]
+    public void ExpectOk_ErrorValue_ThrowsExceptionWithDefaultMessage()
+    {
+        var result = GetErrorValue();
+
+        try
+        {
+            _ = result.ExpectOk();
+        }
+        catch (OkResultExpectedException ex)
+        {
+            Assert.That(ex.Message, Is.EqualTo("Result object was expected to have Ok value, but has Error value instead."));
+            Assert.Pass();
+            return;
+        }
+
+        Assert.Fail();
+    }
+
+    [Test]
     public void ExpectOk_ErrorValue_ThrowsCustomException()
     {
         var result = GetErrorValue();
