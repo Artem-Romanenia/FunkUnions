@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="src/FunkUnions/FunkUnions.csproj" />
+  <Project Path="tests/FunkUnions.UnitTests/FunkUnions.UnitTests.csproj" Id="c9c7f5fa-e056-4eec-96b3-259a10aae160" />
+</Solution>
