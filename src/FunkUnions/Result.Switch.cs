@@ -2,7 +2,7 @@
 
 namespace FunkUnions;
 
-public partial union Result<T, TError>
+public partial struct Result<T, TError>
 {
     public readonly void Switch(Action<T> ok, Action<TError> error)
     {

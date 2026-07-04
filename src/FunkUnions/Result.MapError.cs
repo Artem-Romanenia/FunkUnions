@@ -1,6 +1,6 @@
 ﻿namespace FunkUnions;
 
-public partial union Result<T, TError>
+public partial struct Result<T, TError>
 {
     public readonly Result<T, TError2> MapError<TError2>(Func<TError, TError2> map)
         where TError2 : notnull

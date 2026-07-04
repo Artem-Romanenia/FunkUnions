@@ -1,6 +1,6 @@
 ﻿namespace FunkUnions;
 
-public partial union Result<T, TError>
+public partial struct Result<T, TError>
 {
     public readonly Result<T2, TError> And<T2>(Result<T2, TError> res)
         where T2 : notnull
@@ -11,7 +11,7 @@ public partial union Result<T, TError>
         };
 }
 
-public static partial class ResultExtensions
+public static partial class Result
 {
     extension<T, TError>(Result<T, TError> res)
         where T : notnull

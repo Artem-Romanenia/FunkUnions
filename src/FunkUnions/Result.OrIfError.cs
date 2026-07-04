@@ -1,6 +1,6 @@
 ﻿namespace FunkUnions;
 
-public partial union Result<T, TError>
+public partial struct Result<T, TError>
 {
     public readonly Result<T, TError2> OrIfError<TError2>(Func<TError, Result<T, TError2>> op)
         where TError2 : notnull
@@ -19,7 +19,7 @@ public partial union Result<T, TError>
         };
 }
 
-public static partial class ResultExtensions
+public static partial class Result
 {
     extension<T, TError>(Result<T, TError> res)
         where T : notnull

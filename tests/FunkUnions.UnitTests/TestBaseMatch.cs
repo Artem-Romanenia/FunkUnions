@@ -7,14 +7,17 @@ public abstract class TestBaseMatch<T, TError> : TestBase<T, TError>
     protected abstract string MatchRes(Result<T, TError> res);
 }
 
-public abstract class TestBase<T, TError>
+public abstract class TestBase<T, TError> : TestBase
     where T : notnull
     where TError : notnull
 {
     protected Result<int, Exception> GetOkValue() => 2;
 
     protected Result<int, Exception> GetErrorValue() => new Exception("Test Exception");
+}
 
+public abstract class TestBase
+{
     public interface ISimpleLogger
     {
         void LogSuccess(string message);

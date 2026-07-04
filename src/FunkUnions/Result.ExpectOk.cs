@@ -1,6 +1,6 @@
 ﻿namespace FunkUnions;
 
-public partial union Result<T, TError>
+public partial struct Result<T, TError>
 {
     public readonly T ExpectOk(string? customMessage = null)
         => this switch

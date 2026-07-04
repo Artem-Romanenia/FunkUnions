@@ -1,16 +1,58 @@
-﻿namespace FunkUnions;
+﻿using System.Diagnostics;
 
-public partial union Result<T, TError>
+namespace FunkUnions;
+
+public partial struct Result<T, TError>
 {
-    public readonly void InspectOk(Action<T> ok)
-        => Switch(ok, static _ => { });
+    public readonly Result<T, TError> InspectOk(Action<T> ok)
+    {
+        switch (this)
+        {
+            case T okVal:
+                ok(okVal);
+                return this;
+            case TError err:
+                return this;
+            default: throw new UnreachableException($"Result object is not expected to have value: '{Value}'");
+        }
+    }
 
-    public readonly async Task InspectOk(Func<T, Task> ok)
-        => await Switch(ok, static _ => { });
+    public readonly async Task<Result<T, TError>> InspectOk(Func<T, Task> ok)
+    {
+        switch (this)
+        {
+            case T okVal:
+                await ok(okVal);
+                return this;
+            case TError err:
+                return this;
+            default: throw new UnreachableException($"Result object is not expected to have value: '{Value}'");
+        }
+    }
 
-    public readonly void InspectError(Action<TError> error)
-        => Switch(static _ => { }, error);
+    public readonly Result<T, TError> InspectError(Action<TError> error)
+    {
+        switch (this)
+        {
+            case T okVal:
+                return this;
+            case TError err:
+                error(err);
+                return this;
+            default: throw new UnreachableException($"Result object is not expected to have value: '{Value}'");
+        }
+    }
 
-    public readonly async Task InspectError(Func<TError, Task> error)
-        => await Switch(static _ => { }, error);
+    public readonly async Task<Result<T, TError>> InspectError(Func<TError, Task> error)
+    {
+        switch (this)
+        {
+            case T okVal:
+                return this;
+            case TError err:
+                await error(err);
+                return this;
+            default: throw new UnreachableException($"Result object is not expected to have value: '{Value}'");
+        }
+    }
 }
