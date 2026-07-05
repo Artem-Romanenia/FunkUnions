@@ -1,6 +1,6 @@
 ﻿namespace FunkUnions.UnitTests.Result;
 
-public class OrExtensionTests : TestBaseMatch<Either<int, long>, string>
+public class OrExtensionTests : TestBaseMatchResult<Either<int, long>, string>
 {
     [Test]
     public void Or_OkValueOkContinuation_RemainsOriginalValue()

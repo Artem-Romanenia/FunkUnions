@@ -27,7 +27,7 @@ public partial struct Result<T, TError> : IUnion
         return !_isOk;
     }
 
-    public object? Value => _isOk ? _ok : _error;
+    public readonly object? Value => _isOk ? _ok : _error;
 }
 
 public static partial class Result;

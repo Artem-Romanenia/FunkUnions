@@ -1,6 +1,6 @@
 ﻿namespace FunkUnions.UnitTests.Result;
 
-public class MapTests : TestBaseMatch<int, Exception>
+public class MapTests : TestBaseMatchResult<int, Exception>
 {
     [Test]
     public void Map_OkValue_Mapped()

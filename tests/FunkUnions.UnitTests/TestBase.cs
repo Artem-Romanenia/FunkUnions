@@ -1,10 +1,16 @@
 ﻿namespace FunkUnions.UnitTests;
 
-public abstract class TestBaseMatch<T, TError> : TestBase<T, TError>
+public abstract class TestBaseMatchResult<T, TError> : TestBase<T, TError>
     where T : notnull
     where TError : notnull
 {
     protected abstract string MatchRes(Result<T, TError> res);
+}
+
+public abstract class TestBaseMatchMaybe<T> : TestBase<T, object>
+    where T : notnull
+{
+    protected abstract string MatchMaybe(Maybe<T> res);
 }
 
 public abstract class TestBase<T, TError> : TestBase
@@ -14,6 +20,10 @@ public abstract class TestBase<T, TError> : TestBase
     protected Result<int, Exception> GetOkValue() => 2;
 
     protected Result<int, Exception> GetErrorValue() => new Exception("Test Exception");
+
+    protected Maybe<int> GetSome() => 2;
+
+    protected Maybe<int> GetNone() => None.Value;
 }
 
 public abstract class TestBase

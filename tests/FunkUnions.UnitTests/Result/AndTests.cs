@@ -1,6 +1,6 @@
 ﻿namespace FunkUnions.UnitTests.Result;
 
-public class AndTests : TestBaseMatch<int, Exception>
+public class AndTests : TestBaseMatchResult<int, Exception>
 {
     [Test]
     public void And_OkValueOkContinuation_ValueMapped()

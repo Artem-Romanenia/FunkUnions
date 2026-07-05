@@ -1,6 +1,6 @@
 ﻿namespace FunkUnions.UnitTests.Result;
 
-public class ExpectOkTests : TestBaseMatch<int, Exception>
+public class ExpectOkTests : TestBaseMatchResult<int, Exception>
 {
     [Test]
     public void ExpectOk_OkValue_ReturnsOk()

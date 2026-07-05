@@ -1,6 +1,6 @@
 ﻿namespace FunkUnions.UnitTests.Result;
 
-public class OrIfErrorTests : TestBaseMatch<int, string>
+public class OrIfErrorTests : TestBaseMatchResult<int, string>
 {
     [Test]
     public void OrIfError_OkValueOkContinuation_RemainsOriginalValue()

@@ -1,6 +1,6 @@
 ﻿namespace FunkUnions.UnitTests.Result;
 
-public class MapErrorAsUnionWithTests : TestBaseMatch<int, Either<Exception, string>>
+public class MapErrorAsUnionWithTests : TestBaseMatchResult<int, Either<Exception, string>>
 {
     [Test]
     public void MapErrorAsUnionWith_OkValue_RemainsOriginal()
